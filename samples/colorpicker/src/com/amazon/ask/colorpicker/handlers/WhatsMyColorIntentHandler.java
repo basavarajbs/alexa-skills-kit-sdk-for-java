@@ -22,8 +22,10 @@ import java.util.Optional;
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class WhatsMyColorIntentHandler implements RequestHandler {
-    public static final String COLOR_KEY = "COLOR";
-    public static final String COLOR_SLOT = "Color";
+    public static final String NAME_KEY = "NAME";
+    public static final String NAME = "name";
+    public static final String COLOR_KEY = "NAME";
+    public static final String COLOR_SLOT = "name";
 
     @Override
     public boolean canHandle(HandlerInput input) {

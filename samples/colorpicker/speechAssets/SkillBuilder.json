@@ -1,86 +1,111 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "color picker",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "color picker",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "MyColorIsIntent",
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.US_FIRST_NAME",
+                            "samples": [
+                                "myself {name}",
+                                "am {name}",
+                                "my name is {name}",
+                                "{name}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{name}",
+                        "my name is {name}",
+                        " my favorite color is {name}"
+                    ]
+                },
+                {
+                    "name": "WhatsMyColorIntent",
+                    "slots": [],
+                    "samples": [
+                        "what is my name",
+                        "say my name"
+                    ]
+                }
+            ],
+            "types": []
         },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
+        "dialog": {
+            "intents": [
+                {
+                    "name": "MyColorIsIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.391556197242"
+                    },
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.US_FIRST_NAME",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.752556453804.418797709322",
+                                "elicitation": "Elicit.Slot.752556453804.418797709322"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "MyColorIsIntent",
-          "slots": [
+        "prompts": [
             {
-              "name": "Color",
-              "type": "LIST_OF_COLORS"
+                "id": "Confirm.Intent.752556453804",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "{name} is this correct?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.752556453804.418797709322",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "may i know your good name"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.752556453804.418797709322",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "{name} is this correct"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.391556197242",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "{name} is this correct?"
+                    }
+                ]
             }
-          ],
-          "samples": [
-            " my color is {Color}",
-            " my favorite color is {Color}"
-          ]
-        },
-        {
-          "name": "WhatsMyColorIntent",
-          "slots": [],
-          "samples": [
-            "whats my color",
-            "what is my color",
-            "say my color",
-            "tell me my color",
-            "whats my favorite color",
-            "what is my favorite color",
-            "say my favorite color",
-            "tell me my favorite color",
-            "tell me what my favorite color is"
-          ]
-        }
-      ],
-      "types": [
-        {
-          "name": "LIST_OF_COLORS",
-          "values": [
-            {
-              "name": {
-                "value": "green"
-              }
-            },
-            {
-              "name": {
-                "value": "blue"
-              }
-            },
-            {
-              "name": {
-                "value": "purple"
-              }
-            },
-            {
-              "name": {
-                "value": "red"
-              }
-            },
-            {
-              "name": {
-                "value": "orange"
-              }
-            },
-            {
-              "name": {
-                "value": "yellow"
-              }
-            }
-          ]
-        }
-      ]
+        ]
     }
-  }
 }
